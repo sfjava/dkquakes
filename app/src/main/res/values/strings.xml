@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">dkquakes</string>
+    <string name="quakes_list_title">Earthquakes</string>
 </resources>
