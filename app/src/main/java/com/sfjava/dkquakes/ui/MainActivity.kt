@@ -1,7 +1,8 @@
-package com.sfjava.dkquakes
+package com.sfjava.dkquakes.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.sfjava.dkquakes.R
 
 class MainActivity : AppCompatActivity() {
 
