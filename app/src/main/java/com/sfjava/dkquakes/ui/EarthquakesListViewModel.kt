@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sfjava.dkquakes.data.Earthquake
-import com.sfjava.dkquakes.service.EarthquakesApi
+import com.sfjava.dkquakes.service.EarthquakesService
 import kotlinx.coroutines.launch
 
-class EarthquakesListViewModel : ViewModel() {
+class EarthquakesListViewModel(val earthquakesService: EarthquakesService) : ViewModel() {
     val earthquakes: LiveData<List<Earthquake>>
         get() = _earthquakes
 
@@ -21,7 +21,7 @@ class EarthquakesListViewModel : ViewModel() {
     private fun fetchEarthquakes() {
         println("EarthquakesListViewModel::fetchEarthquakes()")
         viewModelScope.launch {
-            _earthquakes.value = EarthquakesApi.earthquakesService.getEarthquakes()
+            _earthquakes.value = earthquakesService.getEarthquakes()
         }
     }
 }
