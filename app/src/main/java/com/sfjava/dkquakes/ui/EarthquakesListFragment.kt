@@ -11,18 +11,18 @@ class EarthquakesListFragment : Fragment() {
     private val viewModel: EarthquakesListViewModel by viewModels()
     private lateinit var binding: EarthquakesListFragmentBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
-        binding = EarthquakesListFragmentBinding.inflate(inflater, container, false) // .apply {
-        //      viewModel = this@EarthquakesListFragment.viewModel
-        // }
-        context ?: return binding.root
-
-        val adapter = EarthquakeListAdapter()
-        binding.earthquakesList.adapter = adapter
-        subscribeUi(adapter)
-
+        binding = EarthquakesListFragmentBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = this@EarthquakesListFragment
+            viewModel = this@EarthquakesListFragment.viewModel
+        }
+        binding.earthquakesList.adapter = EarthquakeListAdapter().also {
+            subscribeUi(it)
+        }
         return binding.root
     }
 
