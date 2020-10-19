@@ -26,7 +26,7 @@ class EarthquakesListViewModel(
     private fun fetchEarthquakes() {
         println("EarthquakesListViewModel::fetchEarthquakes()")
         viewModelScope.launch {
-            _earthquakes.value = earthquakesService.getEarthquakes()
+            _earthquakes.value = earthquakesService.getEarthquakes().earthquakes
         }
     }
 

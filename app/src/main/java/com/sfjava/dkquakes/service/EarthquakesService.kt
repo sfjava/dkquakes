@@ -21,5 +21,9 @@ import com.sfjava.dkquakes.data.Earthquake
  *
  */
 interface EarthquakesService {
-    suspend fun getEarthquakes(): List<Earthquake>
+    suspend fun getEarthquakes(): Earthquakes
 }
+
+// NOTE: need this wrapper since the JSON for the Geonames Earthquakes API response is
+// actually an *object* with the list of quakes as it's value... ((sigh))
+data class Earthquakes(val earthquakes: List<Earthquake>)
