@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt' // needed for BindingAdapters
 
 android {
     compileSdkVersion 30
@@ -51,6 +52,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation "com.squareup.moshi:moshi-kotlin:1.11.0"
+    // implementation "com.squareup.moshi:moshi-adapters:1.11.0" // TODO: for datetime JSON fields
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

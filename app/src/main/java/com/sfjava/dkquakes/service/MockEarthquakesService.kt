@@ -15,6 +15,7 @@ class MockEarthquakesService(val context: Context): EarthquakesService {
 
         // or, build mock earthquake list data from JSON file
         val moshi = Moshi.Builder()
+             // .add(Date::class, Rfc3339DateJsonAdapter().nullSafe()) // FIXME: for datetime field?
             .add(KotlinJsonAdapterFactory())
             .build()
 
