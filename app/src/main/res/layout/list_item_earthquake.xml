@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener" />
-
         <variable
             name="earthquake"
             type="com.sfjava.dkquakes.data.Earthquake" />
+
+        <variable
+            name="viewmodel"
+            type="com.sfjava.dkquakes.viewmodels.EarthquakesListViewModel" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?android:attr/listPreferredItemHeight"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:onClick="@{() -> viewmodel.openEarthquakeDetail(earthquake.id)}">
 
         <TextView
             android:id="@+id/quake_id"
@@ -72,4 +71,5 @@
             android:text='@{earthquake.latitude + ", " + earthquake.longitude + " (lat/lon)"}'
             tools:text="0.7731, 92.4522 (lat/lon)" />
     </RelativeLayout>
+
 </layout>

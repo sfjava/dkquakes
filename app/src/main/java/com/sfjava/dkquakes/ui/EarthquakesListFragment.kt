@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.navigation.fragment.findNavController
 import androidx.savedstate.SavedStateRegistryOwner
 import com.sfjava.dkquakes.DKQuakesApplication
 import com.sfjava.dkquakes.databinding.EarthquakesListFragmentBinding
@@ -32,9 +33,10 @@ class EarthquakesListFragment : Fragment() {
             lifecycleOwner = this@EarthquakesListFragment
             viewModel = this@EarthquakesListFragment.viewModel
         }
-        binding.earthquakesList.adapter = EarthquakeListAdapter().also {
+        binding.earthquakesList.adapter = EarthquakeListAdapter(viewModel).also {
             subscribeUi(it)
         }
+        setupNavigation()
         return binding.root
     }
 
@@ -42,6 +44,17 @@ class EarthquakesListFragment : Fragment() {
         viewModel.earthquakes.observe(viewLifecycleOwner) { earthquakes ->
             adapter.submitList(earthquakes)
         }
+    }
+
+    private fun setupNavigation() {
+        viewModel.openEarthquakeEvent.observe(viewLifecycleOwner, EventObserver {
+            openEarthquakeDetails(it)
+        })
+    }
+
+    private fun openEarthquakeDetails(earthquakeId: String) {
+        val action = EarthquakesListFragmentDirections.actionEarthquakesListFragmentToEarthquakeDetailFragment(earthquakeId)
+        findNavController().navigate(action)
     }
 
     // NOTE: the following is be generic, and could be used for all view-models...

@@ -10,6 +10,17 @@
         android:name="com.sfjava.dkquakes.ui.EarthquakesListFragment"
         android:label="@string/quakes_list_title"
         tools:layout="@layout/earthquakes_list_fragment">
+        <action
+            android:id="@+id/action_earthquakes_list_fragment_to_earthquake_detail_fragment"
+            app:destination="@id/earthquake_detail_fragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/earthquake_detail_fragment"
+        android:name="com.sfjava.dkquakes.ui.EarthquakeDetailFragment"
+        android:label="Earthquake Details">
+        <argument
+            android:name="earthquakeId"
+            app:argType="string" />
+    </fragment>
 </navigation>

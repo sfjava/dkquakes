@@ -3,6 +3,7 @@ package com.sfjava.dkquakes.viewmodels
 import androidx.lifecycle.*
 import com.sfjava.dkquakes.data.Earthquake
 import com.sfjava.dkquakes.service.EarthquakesService
+import com.sfjava.dkquakes.ui.Event
 import kotlinx.coroutines.launch
 
 class EarthquakesListViewModel(
@@ -16,6 +17,15 @@ class EarthquakesListViewModel(
         get() = _earthquakes
 
     private val _earthquakes = MutableLiveData<List<Earthquake>>()
+
+    // UI event for when a list-item is tapped; --> open item detail fragment
+    private val _openEarthquakeEvent = MutableLiveData<Event<String>>()
+    val openEarthquakeEvent: LiveData<Event<String>> = _openEarthquakeEvent
+
+    // called by data-binding in layout
+    fun openEarthquakeDetail(earthquakeId: String) {
+        _openEarthquakeEvent.value = Event(earthquakeId)
+    }
 
     init {
         // NOTE: if we had any saved-state, we'd get that here too, when initializing... e.g.
