@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">dkquakes</string>
     <string name="quakes_list_title">Earthquakes</string>
+
+    <!-- NOTE: ideally, this API key belongs in a "better place" :)
+         e.g. in a "secure.properties" file in project root, and read by build.gradle -->
+    <string name="google_maps_api_key">AIzaSyDV7-NG4f7QDIA68ojZOlO0yrATwPsexmk</string>
 </resources>

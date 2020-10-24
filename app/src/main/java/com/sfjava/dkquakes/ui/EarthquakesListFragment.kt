@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.savedstate.SavedStateRegistryOwner
 import com.sfjava.dkquakes.DKQuakesApplication
+import com.sfjava.dkquakes.data.Earthquake
 import com.sfjava.dkquakes.databinding.EarthquakesListFragmentBinding
 import com.sfjava.dkquakes.service.EarthquakesService
 import com.sfjava.dkquakes.viewmodels.EarthquakesListViewModel
@@ -52,8 +53,12 @@ class EarthquakesListFragment : Fragment() {
         })
     }
 
-    private fun openEarthquakeDetails(earthquakeId: String) {
-        val action = EarthquakesListFragmentDirections.actionEarthquakesListFragmentToEarthquakeDetailFragment(earthquakeId)
+    private fun openEarthquakeDetails(earthquake: Earthquake) {
+        val action =
+            EarthquakesListFragmentDirections.actionEarthquakesListFragmentToEarthquakeDetailActivity(
+                earthquake.latitude.toFloat(),
+                earthquake.longitude.toFloat()
+            )
         findNavController().navigate(action)
     }
 

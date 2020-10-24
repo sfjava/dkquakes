@@ -11,16 +11,20 @@
         android:label="@string/quakes_list_title"
         tools:layout="@layout/earthquakes_list_fragment">
         <action
-            android:id="@+id/action_earthquakes_list_fragment_to_earthquake_detail_fragment"
-            app:destination="@id/earthquake_detail_fragment" />
+            android:id="@+id/action_earthquakes_list_fragment_to_earthquake_detail_activity"
+            app:destination="@id/earthquake_detail_activity" />
     </fragment>
 
-    <fragment
-        android:id="@+id/earthquake_detail_fragment"
-        android:name="com.sfjava.dkquakes.ui.EarthquakeDetailFragment"
-        android:label="Earthquake Details">
+    <activity
+        android:id="@+id/earthquake_detail_activity"
+        android:name="com.sfjava.dkquakes.ui.EarthquakeMapActivity"
+        android:label="Earthquake Map Detail">
         <argument
-            android:name="earthquakeId"
-            app:argType="string" />
-    </fragment>
+            android:name="latitude"
+            app:argType="float" />
+        <argument
+            android:name="longitude"
+            app:argType="float" />
+    </activity>
+
 </navigation>

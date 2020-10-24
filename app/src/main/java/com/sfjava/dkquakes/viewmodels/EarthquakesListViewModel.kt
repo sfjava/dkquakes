@@ -19,12 +19,12 @@ class EarthquakesListViewModel(
     private val _earthquakes = MutableLiveData<List<Earthquake>>()
 
     // UI event for when a list-item is tapped; --> open item detail fragment
-    private val _openEarthquakeEvent = MutableLiveData<Event<String>>()
-    val openEarthquakeEvent: LiveData<Event<String>> = _openEarthquakeEvent
+    private val _openEarthquakeEvent = MutableLiveData<Event<Earthquake>>()
+    val openEarthquakeEvent: LiveData<Event<Earthquake>> = _openEarthquakeEvent
 
     // called by data-binding in layout
-    fun openEarthquakeDetail(earthquakeId: String) {
-        _openEarthquakeEvent.value = Event(earthquakeId)
+    fun openEarthquakeDetail(earthquake: Earthquake) {
+        _openEarthquakeEvent.value = Event(earthquake)
     }
 
     init {

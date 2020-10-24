@@ -14,8 +14,8 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -62,6 +62,9 @@ dependencies {
 
     implementation "com.squareup.moshi:moshi-kotlin:1.11.0"
     // implementation "com.squareup.moshi:moshi-adapters:1.11.0" // TODO: for datetime JSON fields
+
+    // Google Maps Services (GMS)
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
