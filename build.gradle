@@ -1,6 +1,7 @@
 buildscript {
     ext.kotlin_version = "1.4.10"
     ext.navigation_version = "2.3.0"
+
     repositories {
         google()
         jcenter()
@@ -21,4 +22,14 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    coroutinesVersion = '1.2.1'
+    archTestingVersion = '2.1.0'
+
+    // androidXVersion = '1.0.0'
+    androidXTestCoreVersion = '1.2.0'
+    androidXTestExtKotlinRunnerVersion = '1.1.1'
+    androidXTestRulesVersion = '1.2.0'
 }

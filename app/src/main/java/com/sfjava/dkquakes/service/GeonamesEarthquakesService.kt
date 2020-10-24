@@ -10,7 +10,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Url
 
-class GeonamesEarthquakesService(val context: Context): EarthquakesService {
+class GeonamesEarthquakesService: EarthquakesService {
 
     private val BASE_URL = "http://api.geonames.org"
     private val FULL_QUERY_URL = "/earthquakesJSON?formatted=true&north=44.1&south=-9.9&east=-22.4&west=55.2" +
