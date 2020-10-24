@@ -1,32 +1,15 @@
 package com.sfjava.dkquakes.ui
 
-import android.widget.TextView
-
+import android.graphics.Color
+import android.view.View
 import androidx.databinding.BindingAdapter
-import java.text.DateFormat
-import java.util.*
 
-@BindingAdapter("android:text")
-fun setText(view: TextView, date: Date?) {
-    if (date != null) {
-        val df: DateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
-        val localizedDate: String = df.format(date)
-        view.text = localizedDate
-    }
-}
-
-@BindingAdapter("android:text")
-fun setText(view: TextView, value: Double?) {
-    if (value != null) {
-        view.text = value.toString()
-    }
-}
-
-@BindingAdapter("android:date")
-fun setDate(view: TextView, date: Date?) {
-    if (date != null) {
-        val df: DateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
-        val localizedDate: String = df.format(date)
-        view.text = localizedDate
+@BindingAdapter("android:background")
+fun setBackground(view: View, toggle: Boolean) {
+    if(toggle) {
+        // FIXME: define this highlight color in a colors resource
+        view.setBackgroundColor(Color.argb(100, 200, 30, 0))
+    } else {
+        view.setBackgroundColor(Color.TRANSPARENT)
     }
 }
