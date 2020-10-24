@@ -27,6 +27,9 @@ class EarthquakesListViewModel(
         _openEarthquakeEvent.value = Event(earthquake)
     }
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     init {
         // NOTE: if we had any saved-state, we'd get that here too, when initializing... e.g.
         // setFiltering(getSavedFilterType())
@@ -35,8 +38,10 @@ class EarthquakesListViewModel(
 
     private fun fetchEarthquakes() {
         println("EarthquakesListViewModel::fetchEarthquakes()")
+        _isLoading.value = true
         viewModelScope.launch {
             _earthquakes.value = earthquakesService.getEarthquakes().earthquakes
+            _isLoading.value = false
         }
     }
 
