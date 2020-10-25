@@ -1,6 +1,5 @@
 package com.sfjava.dkquakes.service
 
-import android.content.Context
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -10,6 +9,27 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Url
 
+/**
+ * Provides an implementation of the [EarthquakesService] backed by data from the HTTP web-service
+ * endpoint from "geonames.org".
+ *
+ * Example JSON from the Geonames Earthquakes Service:
+ * http://api.geonames.org/earthquakesJSON?formatted=true&north=44.1&south=-9.9&east=-22.4&west=55.2
+ *
+ * { "earthquakes": [
+ *      {
+ *         "datetime": "2011-03-11 04:46:23",
+ *         "depth": 24.4,
+ *         "lng": 142.369,
+ *         "src": "us",
+ *         "eqid": "c0001xgp",
+ *         "magnitude": 8.8,
+ *         "lat": 38.322
+ *       }, ...
+ *   ]
+ * }
+ *
+ */
 class GeonamesEarthquakesService: EarthquakesService {
 
     private val BASE_URL = "http://api.geonames.org"

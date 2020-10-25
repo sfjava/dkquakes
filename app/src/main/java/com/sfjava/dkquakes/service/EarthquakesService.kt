@@ -2,28 +2,16 @@ package com.sfjava.dkquakes.service
 
 import com.sfjava.dkquakes.data.Earthquake
 
-/*
- * Example JSON from Earthquake Service:
- * http://api.geonames.org/earthquakesJSON?formatted=true&north=44.1&south=-9.9&east=-22.4&west=55.2
- *
- * { "earthquakes": [
- *      {
- *         "datetime": "2011-03-11 04:46:23",
- *         "depth": 24.4,
- *         "lng": 142.369,
- *         "src": "us",
- *         "eqid": "c0001xgp",
- *         "magnitude": 8.8,
- *         "lat": 38.322
- *       }, ...
- *   ]
- * }
- *
+/**
+ * Defines the API interface for an Earthquakes Service.
  */
 interface EarthquakesService {
     suspend fun getEarthquakes(): Earthquakes
 }
 
-// NOTE: need this wrapper since the JSON for the Geonames Earthquakes API response is
+// NOTE: need this wrapper data-class since the JSON for the Geonames Earthquakes API response is
 // actually an *object* with the list of quakes as it's value... ((sigh))
+//
+// FIXME: not sure if this should really live in the data-model package or... not :-/
+//
 data class Earthquakes(val earthquakes: List<Earthquake>)

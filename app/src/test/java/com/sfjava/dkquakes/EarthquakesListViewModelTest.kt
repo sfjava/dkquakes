@@ -4,7 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
 import com.sfjava.dkquakes.data.Earthquake
 import com.sfjava.dkquakes.service.EarthquakesService
-import com.sfjava.dkquakes.service.MockEarthquakesService
 import com.sfjava.dkquakes.viewmodels.EarthquakesListViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertFalse
