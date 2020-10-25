@@ -5,11 +5,12 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.sfjava.dkquakes.ui.EarthquakeListAdapter
 import com.sfjava.dkquakes.ui.MainActivity
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -20,6 +21,16 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class EarthquakesInstrumentedTest {
+    @Test
+    fun verifyRunningTestApplication() {
+        assertTrue(InstrumentationRegistry.getInstrumentation().componentName.className
+            .equals("com.sfjava.dkquakes.MockApplicationTestRunner")
+        )
+        // assertTrue(InstrumentationRegistry.getInstrumentation().context.applicationInfo.className
+        //     .equals("com.sfjava.dkquakes.DKQuakesTestApplication")
+        // )
+    }
+
     @Test
     fun givenListOfearthquakesWhenAnItemIsClickedTheDetailMapisShown() {
         // val appContext = InstrumentationRegistry.getInstrumentation().targetContext
