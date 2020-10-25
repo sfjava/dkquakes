@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sfjava.dkquakes
+package com.sfjava.dkquakes.util
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
